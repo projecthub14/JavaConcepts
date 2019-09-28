@@ -1,4 +1,4 @@
-package com.example.myPackage;
+package com.example.unit1;
 
 //StringLengthLambda myLambda = (String s) -> s.length();
 

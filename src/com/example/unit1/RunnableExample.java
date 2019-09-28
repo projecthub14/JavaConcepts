@@ -1,4 +1,4 @@
-package com.example.myPackage;
+package com.example.unit1;
 
 public class RunnableExample {
 
@@ -18,7 +18,7 @@ public class RunnableExample {
         //this works because Runnable has single method ,
         //if it had more than one method , we have to write lamda function of that type
 
-        Thread myLambdaThread = new Thread(() ->  System.out.println("Printed inside Lambda Runnable"));
+        Thread myLambdaThread = new Thread(() ->  System.out.println("Printed inside Lambda     Runnable"));
         myLambdaThread.run();
 
     }

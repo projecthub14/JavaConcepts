@@ -1,4 +1,4 @@
-package com.example.myPackage;
+package com.example.unit1;
 
 public class HelloWorldGreeting implements Greeting {
     @Override

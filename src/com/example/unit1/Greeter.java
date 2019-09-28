@@ -1,4 +1,4 @@
-package com.example.myPackage;
+package com.example.unit1;
 
 
 //doubleNumberFunction = public int double(int a) {
