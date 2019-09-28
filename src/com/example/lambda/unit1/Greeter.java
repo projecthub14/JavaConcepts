@@ -16,7 +16,15 @@ package com.example.lambda.unit1;
 // syntax is a. input arguments b. "->"  c.return value
 
 //Lambdas are the functions which exists in isolation
-//these functions are treated as values
+//these functions are treated as values -> functions are entities which are passed around
+
+//in Java 7 we nned to have classes/object to pass behaviour
+//with Lambda we can pass action
+
+//1. Lamdas enable functional programming
+//2. Readable and concise code
+//3. Easier-to-use APIs and libraries -> collection API .. more libraries use lambda
+//4. Enables support parallel processing -> streams
 
 public class Greeter {
 
