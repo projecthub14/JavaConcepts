@@ -26,6 +26,7 @@ package com.example.lambda.unit1;
 //3. Easier-to-use APIs and libraries -> collection API .. more libraries use lambda
 //4. Enables support parallel processing -> streams
 
+
 public class Greeter {
 
     // accept a behaviour and perm that thing
