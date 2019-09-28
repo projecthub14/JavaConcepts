@@ -1,4 +1,4 @@
-package com.example.unit1;
+package com.example.lambda.unit1;
 
 @FunctionalInterface // this is meant to be interface for lambda
 // type of lambda variable

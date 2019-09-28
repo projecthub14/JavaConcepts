@@ -1,4 +1,4 @@
-package com.example.unit2;
+package com.example.lambda.unit2;
 
 
 import java.util.function.BiConsumer;

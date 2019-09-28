@@ -1,15 +1,10 @@
-package com.example.unit2;
-
-import com.example.unit1.Person;
+package com.example.lambda.unit1;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
 
-public class StandardFunctionalInterfacesExample {
+public class Unit1ExerciseSolutionJava8 {
 
     public static void main(String[] args) {
 
@@ -30,24 +25,24 @@ public class StandardFunctionalInterfacesExample {
         Collections.sort(people, (o1, o2) -> o1.getLastName().compareTo(o2.getLastName()));
 
         System.out.println("Printing all Person");
-        performConditionally(people, p -> true , p -> System.out.println(p));
+        printConditionally(people, p-> true);
         System.out.println("------------------");
 
         System.out.println("Printing all Person with lastName starting with C");
-        performConditionally(people, p -> p.getLastName().startsWith("C"), p -> System.out.println(p));
+        printConditionally(people, p -> p.getLastName().startsWith("C"));
 
         System.out.println("------------------");
 
         System.out.println("Printing all Person with firstName starting with C");
-        performConditionally(people, p -> p.getFirstName().startsWith("C"), p -> System.out.println(p.getFirstName()));
+        printConditionally(people, p -> p.getFirstName().startsWith("C"));
 
     }
 
-    //Predicate is generic type- its outof box interface that comes with java.util.function package
-    private static void performConditionally(List<Person> people, Predicate<Person> predicate, Consumer<Person> consumer) {
+
+    private static void printConditionally(List<Person> people, Condition condition) {
         for (Person p : people){
-           if(predicate.test(p))
-             consumer.accept(p);
+           if(condition.test(p))
+            System.out.println(p);
         }
     }
 

@@ -1,4 +1,4 @@
-package com.example.unit1;
+package com.example.lambda.unit1;
 
 public class Main {
 

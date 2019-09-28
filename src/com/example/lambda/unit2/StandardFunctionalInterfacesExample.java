@@ -1,11 +1,14 @@
-package com.example.unit1;
+package com.example.lambda.unit2;
+
+import com.example.lambda.unit1.Person;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.Consumer;
 import java.util.function.Predicate;
 
-public class Unit1ExerciseSolutionJava8 {
+public class StandardFunctionalInterfacesExample {
 
     public static void main(String[] args) {
 
@@ -26,24 +29,24 @@ public class Unit1ExerciseSolutionJava8 {
         Collections.sort(people, (o1, o2) -> o1.getLastName().compareTo(o2.getLastName()));
 
         System.out.println("Printing all Person");
-        printConditionally(people, p-> true);
+        performConditionally(people, p -> true , p -> System.out.println(p));
         System.out.println("------------------");
 
         System.out.println("Printing all Person with lastName starting with C");
-        printConditionally(people, p -> p.getLastName().startsWith("C"));
+        performConditionally(people, p -> p.getLastName().startsWith("C"), p -> System.out.println(p));
 
         System.out.println("------------------");
 
         System.out.println("Printing all Person with firstName starting with C");
-        printConditionally(people, p -> p.getFirstName().startsWith("C"));
+        performConditionally(people, p -> p.getFirstName().startsWith("C"), p -> System.out.println(p.getFirstName()));
 
     }
 
-
-    private static void printConditionally(List<Person> people, Condition condition) {
+    //Predicate is generic type- its outof box interface that comes with java.util.function package
+    private static void performConditionally(List<Person> people, Predicate<Person> predicate, Consumer<Person> consumer) {
         for (Person p : people){
-           if(condition.test(p))
-            System.out.println(p);
+           if(predicate.test(p))
+             consumer.accept(p);
         }
     }
 
