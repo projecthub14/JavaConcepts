@@ -1,6 +1,6 @@
-package com.example.concurrency;
+package com.example.concurrency.basicThreadFunctions;
 
-import static com.example.concurrency.ThreadColor.ANSI_BLUE;
+import static com.example.concurrency.basicThreadFunctions.ThreadColor.ANSI_BLUE;
 
 //jvm has to call  underlying operation system to put thread to sleep
 // it is possible that operating system may not supprt granularity

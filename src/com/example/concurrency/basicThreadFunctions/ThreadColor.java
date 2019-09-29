@@ -1,4 +1,4 @@
-package com.example.concurrency;
+package com.example.concurrency.basicThreadFunctions;
 
 public class ThreadColor {
 

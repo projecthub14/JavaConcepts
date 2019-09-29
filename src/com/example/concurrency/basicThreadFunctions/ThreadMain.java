@@ -1,6 +1,6 @@
-package com.example.concurrency;
+package com.example.concurrency.basicThreadFunctions;
 
-import static com.example.concurrency.ThreadColor.*;
+import static com.example.concurrency.basicThreadFunctions.ThreadColor.*;
 
 public class ThreadMain {
 
