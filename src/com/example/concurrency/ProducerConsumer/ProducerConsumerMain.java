@@ -24,7 +24,7 @@ import java.util.Random;
 //so first thread that blocked could be last thread to get lock
 
 //instead of synchronisation we can use classes that implements
-// java.util.concurrent locks.lock interface
+// java.util.concurrent.locks.lock interface
 
 
 
