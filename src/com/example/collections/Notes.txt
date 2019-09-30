@@ -75,8 +75,8 @@ method on each of thw two objects must produce same integer result
 must produce distinct intefer . however programmer should be aware of producing distinct intefer results for unequal objects to improve performance
 
 g. Set
-HashSet
-LinkedHAshSet -> ordered based on insertion
+HashSet -> unique elements , unordered , unsorted
+LinkedHAshSet -> ordered based on insertion , unique elements
 TreeSet -> sorted so ordered based on sorting criteria
 -> Set doesnot declare any extra methods other than Collection interface
 
@@ -99,6 +99,50 @@ object1.compareTo(object2)
 
  static <T> void sort(List<T> list,Comparator<? super T> c)
  sorts the specified list according to order induced by comparator
+
+b. if we dont want natural ordering and we want custom sort :
+Comparator interface -> of Collection framework
+int compare(T o1 , T o2)
+Compares arguments for order
+
+>>>> if it returns -1 -> ordering is first object2 then object1
+>>>> if it returns 1 -> ordering is first object 1 then object2
+>>>> if it 0 -> stand at same level
+
+
+g. TreeSet -> ordered based on sorting , unique elements
+implements SortedSet , NavigableSet imterface
+>>>SortedSet methods :
+they are just retrieve
+
+1. Comparator<? super E> comparator()
+2. E first()
+3. SortedSet<E> headSet(E element)
+4. E last()
+5. SortedSet<E> subSet(F fromelement , E toElement)
+6. SortedSet<E> tailSet(E fromElement) -> elements grater than or equal to fromElements
+
+there is no sort method that means when we insert elemnt they will be sorted
+
+headSet() -> returns all elements that are on top of specified elemnt
+tailSet() -> returns all elements below specified element
+
+>>> Navigable Set :
+
+defines utilites to fetch closest match :
+1. ceiling(E e) -> returns least element in Set
+
+2. floor(E e) -> returns greatest element in Set
+
+3. higher(E e) -> returns least element in set strictly greater than given element
+
+4. lower(E e) -> returns greatest element in set that is less than given element
+
+
+h. for sorting if we want to use custom sorting then we can use Comparator<E>
+
+
+
 
 
 
