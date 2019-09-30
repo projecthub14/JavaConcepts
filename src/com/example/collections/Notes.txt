@@ -38,12 +38,22 @@ e. Map<K,V>
 
 f. Collection<E> extends Iterable<E>
   -> boolean add(E param)
+  -> boolean addAll(collection)
+  -> void clear()
+  -> boolean contains(Object o)
+  -> boolean containsAll(Collection)
+  -> boolean  equals(Object o)
+  -> int hashcode()
+  -> boolean isEmpty()
+  -> Iterator<E> iterator
+  -> boolean removeAll(Collection)
   -> boolean remove(Object param)
+  -> boolean retainAll(Collection)
+  -> int size
+  -> Object[] toArray()
+  -> <T> T() toArray(T[] a)
 
 
-
-  -> int size()
-  ->
 
   Collections - Utillties -> using generics
   -> Collections - class
@@ -64,7 +74,11 @@ method on each of thw two objects must produce same integer result
 -> it is not required that if two objects are unequal then calling hashcode on each two objects
 must produce distinct intefer . however programmer should be aware of producing distinct intefer results for unequal objects to improve performance
 
-
+g. Set
+HashSet
+LinkedHAshSet -> ordered based on insertion
+TreeSet -> sorted so ordered based on sorting criteria
+-> Set doesnot declare any extra methods other than Collection interface
 
 
 
