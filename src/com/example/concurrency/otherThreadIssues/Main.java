@@ -40,7 +40,24 @@ package com.example.concurrency.otherThreadIssues;
 //..But if we use volatile variable then JVM writes update value back to main memory immediately after a thread updates the value in its cache.
 // it also guarantees that everytime it reads from volatile variable it reads latest value
 
-//public volatile int counter;
+//public volatile int counter; --> still with volatic operations will be volatile but there will be
+//memory consistency error
+
+//instead of using int counter we can use AtomicInteger object , When using one of Atomic types , we dont have to worry about thread interference
+//classes in java.util.concurrent.atomic package "support lock free  thread safe programming on sinle variable"
+
+
+//use AtomicInteger -> AtomicInteger counter = new AtomicInteger(0);
+//we dont have to syncronize any of increment or decrement operation
+//to increment -> counter.incrementAndGet();
+//to decrement -> counter.decrementAndGet();
+//to get value -> counter.get()
+
+//compareAndSet(expectedValue , newValue ) -> if current value is not equal to expected value then returns false
+//and doesnt set new value -> this is useful when thread knows it might be suspended between getting value and updating it
+
+
+
 //for more info read Master class video
 
 
