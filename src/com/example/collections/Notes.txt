@@ -1,0 +1,70 @@
+1. Important Interfaces in collection hierarchy
+a. interface Collection<E> extends Iterable<E>
+
+--> collection can be ordered  sorted
+--> ordered unsorted
+--> unordered unsorted
+
+b. interface Set<E> extends Collection :
+  -> allows unique things
+  class HashSet               <interface> SortedSet
+  class LinkedHashSet         <interface> NavigableSet
+                        class TreeSet
+c.interface List<E> extends Collection<E>
+   -> cares about which  position object is in (order)
+   -> elements can be addeda at specified positiom
+   -> if position is not specified then it will be added in end
+
+   class ArrayList
+   class Vector
+   class LinkedList
+
+d. Queue<E> extends Collection<E>
+  -> Arranged in order of processing
+      |
+  class LinkedList ->   <interaface> dequeue
+  class PriorityQueue
+
+
+
+e. Map<K,V>
+  -> key value pair
+  -> with unique identifier
+
+  class HashMap  class HashTable
+  class LinkedHAshMap
+  interface SortedMap -> interface NavigableMap ->class TreeMap
+  is in seperate hierarchy
+
+f. Collection<E> extends Iterable<E>
+  -> boolean add(E param)
+  -> boolean remove(Object param)
+
+
+
+  -> int size()
+  ->
+
+  Collections - Utillties -> using generics
+  -> Collections - class
+  -> Arrays -> binary search , copying , filling
+
+g. equals() ->
+-> method confirms that two objects are same w.r.t content
+-> by default every instance gets it from object super class if we dont override
+-> check equals on object content
+
+h. hashcode() ->
+it helps to identify object in heap of other object
+-> returns integer
+-> good if it a unique number
+-> helps in improving performance of collections
+-> if two objects are equal according to equals(Object) method , then calling hashcode
+method on each of thw two objects must produce same integer result
+-> it is not required that if two objects are unequal then calling hashcode on each two objects
+must produce distinct intefer . however programmer should be aware of producing distinct intefer results for unequal objects to improve performance
+
+
+
+
+

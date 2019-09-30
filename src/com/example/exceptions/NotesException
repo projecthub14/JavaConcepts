@@ -1,0 +1,63 @@
+//1. Exception Hierarchy :
+//    ---> Throwable <-----
+           //(checked)
+   //--->Exception        Error
+//     (checked)        (unchecked)
+//|
+//|
+//RunTimeException
+ //       (unchecked)
+
+//There are three categories of exceptions
+1/ Checked exceptions
+2. Unchecked Exception / Runtime exceptions -- we can use interchangeably
+3. Errors
+
+1/ Checked Exceptions :  ( Situational error )
+a. Java compiler requires us to handle
+b. either we can declaratively throw the exceptions up the call stack or handle ourselves
+c. Oracle documentation tells us to use checked exceptions when we can expect the caller of our program to be able to recover
+d. Ex: IOExceptions and ServletExceptions
+
+2. Unchecked exceptions : ( usage error )
+a. Java compiler doesnot require us to handle
+b. Simply put we create an exception that extends RunTime Exception then it will be unchecked exception
+ex: NullPointerException , IllegalArgumentException and SecurityException
+
+3. Error :
+a. Represent serious and usually irrecoverable conditions like library incompatibility , memory leaks , infinite recursion
+b. even though they dont extend runtime exception but they are unchecked exceptions
+ex: stackoverflowerror and outofmemoryerror
+
+4. Handling Exceptions :
+
+4.1 throws :
+a. simplest way to handle exception is rethrow it
+b. simplest way to satisfy a compiler
+c. it does mean that anyone that calls our method need to handle it
+
+4.2 try-catch :
+a. if we want to handle exception by ourselves then we can use try-catch block.
+b. We can handle it by rethrowing our exception or by performing recovery steps
+
+4.3 finally :
+a. when we have code that need to be executed regardless of exeception occurs  then finally is used
+b. we current example whether we need file or not we have to make sure to do appropriate cleanup
+
+4.4 try with resources :
+
+
+
+4.5 Multiple catch Blocks :
+a. sometimes we can have multiple exceptions and can have more than one catch block handle each exception individually
+b. Java lets us handle subclasses exceptions seperately : Place them higher in list of catches
+
+4.6 Union Catch blocks :
+a. if we know that the way to handle exceptions is same then Java 7 introduced the ability to catch multiple exception in same block
+
+
+5. Throwing Exceptions :
+a. throw keyword - when we dont want to handle exception ourselves or we want to generate our exceptions for others to handle
+
+
+
