@@ -23,5 +23,9 @@ public class LinkedHashSetExec {
         while(iterator.hasNext()){
             System.out.println(iterator.next());
         }
+
+        //returns false as element already present
+        //we implemented equals and hashcode so it understands
+        System.out.println(linkedHashSet.add(new Car("H-" + 3)));
     }
 }

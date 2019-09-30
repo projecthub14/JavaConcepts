@@ -80,5 +80,27 @@ LinkedHAshSet -> ordered based on insertion
 TreeSet -> sorted so ordered based on sorting criteria
 -> Set doesnot declare any extra methods other than Collection interface
 
+h. Sort
+compare one element with another element to decode which comes first
+a. Comparable :
+1. Java collections framework as iterface called Comparable interface
+2. Comparable interface has compareTo method
+int compareTo(Object o)
+-> criteria is declared that is called as natural ordering for that kind of objects
+
+object1.compareTo(object2)
+>>>> if it returns -1 -> ordering is first object2 then object1
+>>>> if it returns 1 -> ordering is first object 1 then object2
+>>>> if it 0 -> stand at same level
+
+3. Collections utitily class has two sort method
+ static <T extends Comparable<?super T>> sort(List<T> list)
+ sorts the specified list into ascending order according to natural ordering of its element
+
+ static <T> void sort(List<T> list,Comparator<? super T> c)
+ sorts the specified list according to order induced by comparator
+
+
+
 
 
