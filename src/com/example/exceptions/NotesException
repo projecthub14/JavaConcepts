@@ -45,6 +45,7 @@ a. when we have code that need to be executed regardless of exeception occurs  t
 b. we current example whether we need file or not we have to make sure to do appropriate cleanup
 
 4.4 try with resources :
+Example :
 
 
 
