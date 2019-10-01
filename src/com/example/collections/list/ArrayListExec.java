@@ -28,6 +28,15 @@ public class ArrayListExec {
         }
         carsList.add(4,new Car("Hqwq"));
 
+
+        System.out.println("Java8 Lambda Iterator");
+
+        //java 8 Lambda
+        Iterator<Car> carItrLambda = carsList.iterator();
+
+        carItrLambda.forEachRemaining(System.out::println);
+
+        System.out.println("Normal Iterator");
         //Iterator
         Iterator<Car> carIterator = carsList.iterator();
 

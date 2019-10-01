@@ -141,6 +141,27 @@ defines utilites to fetch closest match :
 
 h. for sorting if we want to use custom sorting then we can use Comparator<E>
 
+i> Map interface > doesnot come in Collection interface
+a. it needs different set of methods due to key value pair
+b. No duplicates as part of key
+HashMap     LinkedHashMap TreeMap
+HashTable
+
+--> hashmap doesnot have iterator directly so get keyset
+keyset()/entryset has iterator()
+hashmap doesnot maintain any order
+it accepts null values and null keys
+
+https://www.baeldung.com/java-hashmap
+
+Collection views :
+1. Key set view -> set of all keys of hash map
+2. Value set view -> set of all values of hash map
+3. View of all entries -> Map.Entry<K,V>
+
+
+
+
 
 
 
