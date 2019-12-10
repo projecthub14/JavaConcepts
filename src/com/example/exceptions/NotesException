@@ -17,15 +17,16 @@
 3. Errors
 
 1/ Checked Exceptions :  ( Situational error )
-a. Java compiler requires us to handle
+a. Java compiler requires us to handle -> if we dont handle class file is not generated
 b. either we can declaratively throw the exceptions up the call stack or handle ourselves
 c. Oracle documentation tells us to use checked exceptions when we can expect the caller of our program to be able to recover
-d. Ex: IOExceptions and ServletExceptions
+d. Ex: IOExceptions and ServletExceptions , FileNotFoundException , SQLException
 
 2. Unchecked exceptions : ( usage error )
 a. Java compiler doesnot require us to handle
 b. Simply put we create an exception that extends RunTime Exception then it will be unchecked exception
-ex: NullPointerException , IllegalArgumentException and SecurityException
+ex: NullPointerException , IllegalArgumentException and SecurityException , Arithmetic Exception ,
+ArrayOutOFBoundException , NumberFormatException , -> they all extend Runtimeexceptions -> Runtimeexception extends Exception extends Throwable
 
 3. Error :
 a. Represent serious and usually irrecoverable conditions like library incompatibility , memory leaks , infinite recursion
@@ -48,7 +49,20 @@ a. when we have code that need to be executed regardless of exeception occurs  t
 b. we current example whether we need file or not we have to make sure to do appropriate cleanup
 
 4.4 try with resources :
-Example :
+Example : when the try block ends the resources are automatically released no need to create a seperate finally block
+try with resource is available to ay class that implements AutoClosable interface . BufferedReader implements AutoCloseable interface
+
+public interface AutoClosable{
+ void close() throws Exception;
+ }
+
+ try(BufferedReader br = new BufferedReader(new FileReader("FILE_PATH")))
+ {
+
+ }
+ catch(..)
+ {
+ }
 
 
 
@@ -63,5 +77,38 @@ a. if we know that the way to handle exceptions is same then Java 7 introduced t
 5. Throwing Exceptions :
 a. throw keyword - when we dont want to handle exception ourselves or we want to generate our exceptions for others to handle
 
+
+1. any method which throw a exception -> throw new Exception() show in signature I am throwing as throws Exception or handle in try catch
+2. then method calling this method should handle execpetion by try catch ot by throws we cannot ignore unchecked exception-> checked Exceptiom
+
+1. any method which throw a exception -> throw new RunTimeException()
+2. then method calling this method need not handle execpetion -> unchecked Exceptiom
+
+Custom Excpetion :
+1. make it checked Exception , extends Exception
+
+class C extends Exception or IOException{
+}
+
+class amountAdder throws C{
+
+ amount(){ -> calling method should handle exception or throws
+
+ throw new C()
+
+ }
+
+ 2. make it unchecked exception
+ class C extends RunTimeException{
+ }
+
+
+ class amountAdder {
+
+  amount(){ -> calling method need not  handle exception
+
+  throw new C()
+
+  }
 
 

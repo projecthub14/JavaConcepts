@@ -1,0 +1,42 @@
+1. Thread lifecycle :
+a. new thread-> when we create a new thread then it will be in this stat and remains in this state untill program starts the thread
+b.Runnable -> once we start new thread then thread is in this state until it is executing its task
+c.Running -> In this start thread starts executing by entering the run() method and yield() method can send back to runnable state
+d. Waiting : thread is in inactive state -> it is still alive but not eligible to run -> as  it is waiting , sleeping or blocked state
+e. Terminated -> A runnable state enters  terminated state when it completes its task or otherwise terminates
+
+Thread class :
+1. Each thread creates its unique object
+2. More memory consumption
+3. A class extending a thread cannot extend any other class
+4. Thread class is extended only if there is need of overriding other methods of it
+5.enable tight coupling
+
+Runnable interface :
+1. each thread creates its unique object
+2. more memory consumption
+3. along with runnable interface a class can implement any other interface
+4. runnable is overrided only if there is need of special run method
+5. enables loose coupling
+
+main thread -> from this other child threads are spawned
+-> it is the last thread to terminate the program
+
+thread pool -> thread pool manages the pool of worker threads and contains a queue that keeps the task waiting to get executed
+
+thread2.join()
+Thread.sleep(1000) -> this thread will sleep for 1 sec
+join() -> waits for thread2 to complete the execution and then join back
+
+t1.isAlive() -> checks if threasd is alive or dont with execution
+
+t1.getName() -> get thread name
+t1.setName("")
+
+t1.getPriority() -> get the priority
+t1.setPriority() ->
+
+Thread.currentThread() -> gives current thread
+
+Synchronization :
+1.

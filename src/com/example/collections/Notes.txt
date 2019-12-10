@@ -14,6 +14,8 @@ c.interface List<E> extends Collection<E>
    -> cares about which  position object is in (order)
    -> elements can be addeda at specified positiom
    -> if position is not specified then it will be added in end
+   List -> inside list duplicate is allowed , insertion order and order in which its displayed is same (insertion order is preserved)
+
 
    class ArrayList
    class Vector
@@ -28,6 +30,7 @@ d. Queue<E> extends Collection<E>
 
 
 e. Map<K,V>
+
   -> key value pair
   -> with unique identifier
 
@@ -61,18 +64,34 @@ f. Collection<E> extends Iterable<E>
 
 g. equals() ->
 -> method confirms that two objects are same w.r.t content
--> by default every instance gets it from object super class if we dont override
+-> by default every instance gets it from object super class if we dont override -> default implementation just compares current object
+to object class (this == object)
 -> check equals on object content
+
+-> object class .equals -> compares the objects on reference
+->for string class str1 = 'sowmya' , str = 'sowmya' -> str1.equals(str2) -> true -> equal implementation of string class compares content
+ // Compare the data members and return accordingly
+        return Double.compare(re, c.re) == 0
+                && Double.compare(im, c.im) == 0;
 
 h. hashcode() ->
 it helps to identify object in heap of other object
+-> hashcode() is part of Object class -> hashcode is native method with implementation in different language and here we are just loading
+just hashcode()
 -> returns integer
--> good if it a unique number
+-> string results -> results.hashcode() -> if we see implementation of hashcode on string class
+hashcode of two string object  may return same value -> hashcode doesnt guarantee to return a unique number
+-> good implementation of hashcode is it returns if it a unique number
+-> gives different number in different run -> to calculate hashcode it uses memory location and preprocess it by adding and multiply
 -> helps in improving performance of collections
+-> we can override hashcode method
 -> if two objects are equal according to equals(Object) method , then calling hashcode
 method on each of thw two objects must produce same integer result
 -> it is not required that if two objects are unequal then calling hashcode on each two objects
-must produce distinct intefer . however programmer should be aware of producing distinct intefer results for unequal objects to improve performance
+must produce distinct hashcode . however programmer should be aware of producing distinct hashcode results for unequal objects to improve performance
+
+-> if two objects are equal then their hashcode is same
+-> if two objects hashcode are same then we cant guarantee that two objects are same
 
 g. Set
 HashSet -> unique elements , unordered , unsorted
@@ -161,11 +180,280 @@ Collection views :
 
 
 
+HashMap Programs :
+Map<String, List> map = new HashMap<String , List>();
+1. map.containsKey(keyStr) -> if map contains key
+2. map.get(keyStr) -> get key
+3. map.values() -> get all values
+4.  map.getOrDefault(s.charAt(i), 0) + 1)
+5. map.keySet() -> Set<String> in for(char c : map.keySet())
+6. map.entrySet() -> Set<Map.Entry<K,V>>
+
+List<List<String>> map = new ArrayList<>();
+map.addAll( );
 
 
 
 
+String Programs:
+char[] cStr = str.toCharArray(); -> on string to get character array ->
+ Arrays.sort(cStr); -> on array we sort
+ character[] to String -> String.valueOf(char[])
 
 
+Array v/s ArrayList :
+ArrayList uses Array as its underlying datastructure
+1. Array is array has fixed length and is specified when array is created and can never be changed
+2. arrayList has variable length that changes dynamically and automatically resizes after the amount of data we have
+   and we dont need to specify the size of arraylist when we created
+1. Array datatypes is primitives(int,float , boolean) , Objects but not support generic data type -> datatype need to be hardcoded when array is created
+2. ArrayList are Objects and can upoort Generic generic data types but not primitive data types -> autoboxing primitive types
+   can be used interchangably with object types
+
+1.Array Performance -> Get and Insert in O(1)
+2.ArrayList -> Get and Insert in O(1)
+
+Array is a fixed size data structure while ArrayList is not.
+One need not to mention the size of Arraylist while creating its object.
+Even if we specify some initial capacity, we can add more elements.
+
+if we have lot of data and your application is super performative then arrays are faster because arraylist resize operation
+ will decrease the performance slightly because during resizing it copies all data from old array to new array
+
+ex: int[] myArray = new int[10];
+int[] myArray = {1,2,3,4,5,6,7,4};
+Dog[] dogs = new Dog[3];
+myArray[3] =7
+int x = myArray[3]
+len = myArray.length;
+
+ArrayList<Integer> myList = new ArrayList<>();
+ArrayList<Cat> cats = new ArrayList<>();
+ArrayList<Cat> cats = new ArrayList<>(25);
+myList.add(7)
+int x = myList.get(7)
+len = myList.size();
+
+1. arraylist default capacity is 10
+2.
 
 
+ArrayList list = new ArrayList(); -> create a new arraylist using default constructor ->internally array is created -> when we use
+default construtor then size of array is 10 (capacity) -> 10 number of indexes will be created
+list.add(10);
+list.add(11);
+list.add(12);
+
+if we try to add a element after the array size is 10 -> its dynamic array so new array is created and this new array is created
+and size of this new array calculated :
+new capacity = old capacity + (Old capacity >> 1) -> new array size
+all the elements in previous array will be copies to new array -> and new elements to be inserted are added to this new array
+once we have new array then older array is eligible for garbage collection
+
+with arraylist null insertion is possible
+we can add heterogenous elements to arraylist ->
+
+when to use Arraylist ->
+list.add(1,30) -> all elements are shifted to next location -> this is bad choice
+
+list.remove(1) -> index of element 1 is removed -> all elements are shifted to right -> this is bad choice
+
+retrival ->Best choice ->  list.get(1) -> O(1) -> implements RandomAccess interface its a Marker Interface -> RandomAccess provides the retrieval
+operation in same amount of time
+
+we have new array ->
+
+How the arraylist works internally :
+1. Arraylist is dynamic array pf variable length which resizes based on amount of data :
+new ArrayList<>() -> default construtor -> with default construtor an object[] is created with initial capacity of 10
+
+
+2. In add(Object) -> capacity of arraylist is checked before adding new element to arraylist
+As elements are added to arraylist it grows automatically
+
+if we have arraylist a with n values -> then a's underlying array is filled with n values, if we try t add new element then n values from array a is
+copies to new array of capacity old array + oldArray >> 1 -> 10 + 5 ->
+
+Difference between Array and ArrayList :
+
+https://javahungry.blogspot.com/2015/03/difference-between-array-and-arraylist-in-java-example.html
+
+Difference between List and Arraylist :
+List is Collection interface which supports duplicate values , insertion order is maintained -> an ordered collection where
+we have precise control over particular list implementation to use for each element
+List interface creates collection of elements which are stores in sequence and can be accessed by their index number.
+
+Arraylist is implementation class for list interface -> array list creates a array of object where array can dynamically grow when
+required
+
+List myArr -> with list iterface we implement list interface but we dont specify what class your objects belong to -> flexibility and decoupling
+ArrayList myArr -> we specify your object class is resizable array -> resizable array implementation of list interface ->
+here we can call only arraylist specific methods on object we call ensureCapacity() of Arraylist interface which is not present in lis interface
+
+https://techdifferences.com/difference-between-list-and-arraylist-in-java.html
+
+
+string s :
+1. immutable -> mutable means we can change the state of object , in  immutable classes we cannot change the state/properties of object
+
+String is immutabel -> once we create string object we cannot change the state/content /properties of object
+
+String str = "Avi";
+if we say str.concat("lash") -> we cannot modify the str object -> so new object is created in memory with modified content->
+
+we need to provide reference to this new  object otherwise str refers to "Avi"
+str = str.concat("lash")
+
+why is string immutable :
+1. String str = "Avi" -> we are creating string using literal so object is created in  string constant pool
+2. String str1 = "Avi" -> before creating object in string constant pool it will check if the object is already in string constant pool
+if it is present then it just refers to that object and new object is not created [string objects are chched in object pool)
+duplicate objects are not allowed in object pool -> helps in memory optimization
+if we say str1.concat("lash") -> creats new object in heap thus doesnot affect str object
+
+why is string used as key of hashmap
+-> if we create string using new operator
+String str = "Avi"
+String str1 = new String("Avi") -> new keyword is runtime operation so object is created in heap and string constant pool
+then object is created in heap also string constant pool -> so i dont want to create object in heap but instead force the JVM to point to address available in use the object
+in string constant pool -> now heap location is not referenced so ready for garbage collection
+we can use intern()
+String str1 = new String("Avi").intern() -> then we can return string in pool memory , if its created using new keyword
+
+-> we are using string as key in hashmap -> string hashcode caching
+
+String s = "Avi"; -> if we are asking to calculate hshcode of this string -> it calculates the hashcode and cache inside the object
+-> further if there is need for hashcode then it will not create hashcode again but just use th one which is stored
+-> since string is immutable then hashcode will not change -> so that hashcode is caching helps
+
+when we create string -> hash is 0 -> when we say str.hashcode() then only hashcode is generated -> then its geenrated only once
+
+in hashMap ->
+
+HashMap<String,Integer> hm =new HashMap<>(); -> key is String
+
+hm.put("aa",1) -> hashcode for this put is calculated
+hm.get("aa") -> again hashcode is computed to get value
+if we have 60 operations of get and pput then hashcode is computed for each key but since string is the key -> hashcode is compouted
+only once as hash is chached in string -> saves lot of memory
+if key is object then hashcode is calculated for each get and put
+
+String :
+1.sequence of characters -> 4 different way to represt string :
+1. String -> class -> present in java.lang
+a. new keywords
+b.literal
+
+Strinng s = new String("sow"); ->
+in memory we have heap and string constant pool -> when we create string object first creates object in SCP as its constant , creates
+another object in heap as creation is happening at run time
+
+s reference points to heap memory
+
+String s2 = "sow"
+creates only in SCP as its constant and reference points it
+
+if we create string object with same content with new / literal :
+1. using new keyword :
+String s1 = new String("java");
+String s2 = new String("java");
+this creats one object in scP and two in heap
+
+String concatenation :
+1. String s1 ="s";
+String s2 = "e";
+
+s1 + s2 ->
+s1.concat(s2)
+
+//   String s1 = "HiHello";        // "HiHello" store in string pool
+//   String s2 = "Hi" + "Hello";   //  store in string pool
+//   System.out.println(s1 == s2); // => Why is return true -> both reference points to string pool
+
+  String s1 ="HiHello";           // store in string constant pool
+  String s2 = "Hi".concat("Hello"); // where it will store ? -> reference points to heap
+
+  System.out.println(s1 == s2);   // => Why is return false -> compares string reference in heap with reference in string pool
+
+2. Stringbuffer
+3.Stringbuilder
+4.Array
+
+HashMap Internal working:
+1. when we say Map<String,Integer> map = new HashMap<String,Integer>() -> this initialize the array of buckets with size 16
+a. each bucket is node -> and each node is linkedlist
+
+map.put("abc",1);
+this calcuates the  hash(key) -> hashcode -> we calculate hashcode -> to store the key in specifc index and also helps in retrieving key
+from specific index
+
+map.put("aaa",2)
+
+node stores key , value , hashcode  and next
+
+then hashcode is returned and this is further computed  to array size -> hashcode % (n-1) -> this gives index on this
+index linked list is created
+
+if two string values return same hashcode then index will be same and are in linkedlist
+
+if map.put("null",4) -> this goes to zeroth bucket
+
+loadfactor -> default value is 0.75 -> when the map is 75% full then table size is doubled
+how do we know the map table is 755 full -> for that we have threshhold -> this default is 12 so when map reaches 12 entries
+then map doubles to 32
+
+get method -> map.get("abc") -> hashcode is computed for "abc" and index is returned then hashcode is compared for entries in linked list
+-> then value is compared
+
+
+String -> string is immutable (once created cannot be modified )
+-> string is slow and cosumes more memory when we concat do too many strings because every time it creates new string
+-> string override equals method of object class so  we can compare two strings by equals method
+
+StringBuilder -> string is mutable (once created can be modified)
+-> StringBuilder is fast and consumes less memory when we concat strings
+-> stringbuilder class doesnt override equals method of object class
+
+StringBuilder ->
+-> StringBuilder is non synchronized so its not thread safe where two threads can call stringbuilder method simultaneously
+-> string builder is more efficient than string buffer
+
+Stringbuffer ->
+-> Stringbuffer is synchronized ie thread safe
+-> String buffer is less efficient than string builder
+
+String -> immutable -> when an attempt is made to modify object then new object is created
+When string is created using string literal then object is created in string pool by JVM
+when string is created with heap then object is created in heap and string pool
+
+
+StringBuilder/StringBuffer -> mutable -> stringbuffer/stringBuilder objects can be modified without
+creating new object
+when stringbuffer/ string builder is created in heap
+
+Performance test -> string concat with + takes 17589ms ->System.currentTimeMillis()
+Stringbuffer append takes -> 20 ms
+StringBuilder append takes -> 10 ms
+
+String -> with concat -> with + new object reference is created so hashcode is different
+StringBuilder -> with append -> before and after append obeject is modified and hashcode value is same
+
+Memeory test :
+1. for concatenating using string string uses more memory than stringbuilder/stringbuffer
+memoryUsed()
+
+jdk -> software development env used for developing java applications -> it includes JRE ,loader , jar , javac , javadoc and other
+tools need for java development
+
+jre -> java run time
+
+Substring :
+1. for substring in java 6 we had memory leak it was fixed in java 7/8
+
+String str = "Sowmya";
+String str1 = str.substring(2,4); -> in java 6 this str1 still refers to str in value -> char[] -> we are still  getiing substring value
+using count and offset and start counting from offset 6 till count value -> we are not creating new string from substring
+
+its memory leak since str1 is still refereing to str and we cannot garbage collect
+
+in java 8 we are not storing entire string in str1 it just as result

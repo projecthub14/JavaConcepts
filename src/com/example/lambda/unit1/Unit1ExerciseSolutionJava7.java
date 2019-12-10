@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+
 public class Unit1ExerciseSolutionJava7 {
 
     public static void main(String[] args) {
@@ -66,6 +67,7 @@ public class Unit1ExerciseSolutionJava7 {
 
 
     private static void printConditionally(List<Person> people, Condition condition) {
+
 
         for(Person p : people) {
             if(condition.test(p))
