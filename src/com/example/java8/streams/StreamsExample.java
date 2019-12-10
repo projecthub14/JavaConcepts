@@ -8,7 +8,38 @@ import java.util.stream.Collectors;
 
 public class StreamsExample {
 
+    private static void mapStream(){
+        List<Integer> list = Arrays.asList(2,3,4,5);
+        List<Integer> square = list.stream().map(i -> i*i).collect(Collectors.toList());
+        list.stream().map(i -> i * i ).forEach(System.out::println);
+        System.out.println(square);
+    }
+
+    private static void filterStream(){
+        List<String> names = Arrays.asList("Reflection","Collection","Stream");
+        List<String> result = names.stream().filter(s -> s.startsWith("S")).collect(Collectors.toList());
+        System.out.println(result);
+    }
+
+    private static void sortedStream(){
+        List<String> names = Arrays.asList("Reflection","Collection","Stream");
+        List<String> result = names.stream().sorted().collect(Collectors.toList());
+        System.out.println(result);
+    }
+
+    private static void reduceStream() {
+
+        List<Integer> list = Arrays.asList(2,3,4,5);
+        int sum = list.stream().reduce(0 , (ans,i) -> ans+i);
+        System.out.println(sum);
+    }
+
     public static void main(String[] args) {
+
+        mapStream();
+        filterStream();
+        sortedStream();
+        reduceStream();
 
         String[] arr = {"abc","efg","bcd","","efgh"};
 
