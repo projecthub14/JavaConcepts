@@ -24,6 +24,7 @@ public class LinkedListExec {
             linkedList.add(new Car("H"+i));
         }
 
+
         linkedList.addFirst(new Car("H-First"));
         linkedList.addLast(new Car("H-Last"));
 

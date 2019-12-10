@@ -1,0 +1,36 @@
+1. Core java benefits is automated memory management
+2. with the help of garbage collectors
+3. GC implicity takes care of allocating and freeing up memory and thus handles majority of memory leaks
+4. Memory leaks is situation where there are objects in heap whoch are no longer used
+5. thus garbage collector is unable to remove them from memory and causes  java.lang.OutOfMemoryError.
+it blocks memory resources and degrades system performance over time.
+
+6. there are two types of objects that reside in heap memory -> referenced and unreferenced objects
+-> reference objects still have active references
+
+The garbage collector removes unreferenced objects periodically, but it never collects the objects that are still being referenced.
+This is where memory leaks can occur:
+1. 3.1. Memory Leak Through static Fields:
+ static fields have a life that usually matches the entire lifetime of the running application
+ a. Minimize the use of static variables
+ b. When using singletons, rely upon an implementation that lazily loads the object instead of eagerly loading
+
+ 2. Through Unclosed Resources :
+ a. Whenever we make a new connection or open a stream, the JVM allocates memory for these resources.
+  A few examples include database connections, input streams, and session objects.
+b.  Forgetting to close these resources can block the memory,
+ thus keeping them out of the reach of GC.
+
+ -> How to Prevent It?
+ a. Always use finally block to close resources
+ b. The code (even in the finally block) that closes the resources should not itself have any exceptions
+ c.  When using Java 7+, we can make use of try-with-resources block
+
+ 3. Improper hashcode() and equals() implementation :
+ Here we're using Person as a key. Since Map doesn't allow duplicate keys,
+  the numerous duplicate Person objects that we've inserted as a key shouldn't increase the memory.
+
+ But since we haven't defined proper equals() method, the duplicate objects pile up and increase the memory,
+  that's why we see more than one object in the memory.
+  if we had overridden the equals() and hashCode()
+  methods properly, then there would only exist one Person object in this Map.

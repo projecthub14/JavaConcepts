@@ -457,3 +457,52 @@ using count and offset and start counting from offset 6 till count value -> we a
 its memory leak since str1 is still refereing to str and we cannot garbage collect
 
 in java 8 we are not storing entire string in str1 it just as result
+
+------------------------------------
+HashTable vs HashMap
+
+1. they both implement Map interface -> differences are :
+a. Thread safety ( synchronized)
+b. Null Keys
+c. Inheritance
+d. Performance
+e. Traverse
+f. Fail-safe
+g. Time Complexity
+h. Legacy
+
+1. HashMap is not thread safe (unsynchronized) whereas hashtable is synchronized( thread safe)
+   hashmap is better for non threaded app as unsynchronized objects perform better than synchronized
+   we can make hashmap thread safe :
+   Map map = Collections.syncronizedMap(hashMap);
+2. Null Keys -> Hashtable can only non null objects as keys or values. In order to store or retrieve the
+objects from hashtable -> object stored as key must implement hashcode and equals method since null
+isnt object we cannot call equals and hashcode on it
+
+HashMAp can contain one null key and nulll values -> when hashmap was created it was specifically designed for
+null values as keys and handles them as a special case
+
+3. Inheritance :
+They both implement map interface but they extend two different classes -> HashMap extends AbstractMap
+class where as HashTable extends legacy Dictionary class
+
+4. Performance:
+HashMap is not synchronized so its faster than hashtable
+
+5. Traverse:
+HashMap is traverse by Iterator whereas HashTable by Enumerator and Iterator
+
+6.Failsafe :
+HashMap iterator is fail safe while enumerator of hashtable is not
+Fail safe is relevant in context of iterators
+If iterator is created on collection object ad other thread tries to modify the collection object
+structurally then concurrent modification exception is thrown
+
+7. Time Complexity :
+Hashtable use seperate chanining(with linkedlist) as collision handling strategy with search time of O(n)
+As of Java 8 -> HashMap uses balanced tree as collision resolution strategy with search time O(logn)
+
+Legacy
+HashMap is a member of Java Collection Framework right from the beginning of its introduction in JDK 1.2 .
+But, HashTable was there before JDK 1.2 and it extends Dictionary class which is the legacy class in JDK.
+From JDK 1.2, it has been made to implement Map interface , making it a member of collection framework.
